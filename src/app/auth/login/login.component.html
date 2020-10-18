@@ -1,1 +1,85 @@
-<p>login works!</p>
+<div class="login-page">
+    <div class="login-box">
+        <div class="login-logo">
+          <h1 href="../../index2.html">Pro<b>Consultas</b></h1>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+          <div class="card-body login-card-body">
+            <p class="login-box-msg">Iniciar sesión</p>
+      
+            <form method="post"
+                  autocomplete="off" 
+                  [formGroup]="loginForm"
+                  (ngSubmit)="login()">
+              <div class="input-group mb-3">
+                <input type="email"
+                        class="form-control"
+                        placeholder="Correo electrónico"
+                        formControlName="email"
+                        (ngModelChange)="loginChange()">
+
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <input type="password"
+                        class="form-control"
+                        placeholder="Contraseña"
+                        formControlName="password"
+                        (ngModelChange)="loginChange()">
+
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="!loginError" class="mb-5">
+              </div>
+              <div class="row">
+                <div class="col text-danger d-flex justify-content-center">
+                    <p *ngIf="loginError">Correo o contraseña incorrecta</p>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-7">
+                  <div class="icheck-primary">
+                    <input type="checkbox"
+                            id="remember"
+                            formControlName="remember">
+
+                    <label for="remember">
+                      Recuérdame
+                    </label>
+                  </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-5">
+                  <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                </div>
+                <!-- /.col -->
+              </div>
+            </form>
+      
+            <br>
+            <div class="row">
+              <div class="col-6">
+                <p class="mb-1">
+                  <a href="forgot-password.html">Olvidé mi contraseña</a>
+                </p>
+              </div>
+              <div class="col-6">
+                <p class="mb-0">
+                  <a routerLink="/register" class="text-center">Crear cuenta nueva</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /.login-card-body -->
+        </div>
+    </div>
+</div>
