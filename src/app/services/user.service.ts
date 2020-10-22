@@ -21,6 +21,7 @@ export class UserService {
             .pipe(
               tap((resp:any) =>{
                 localStorage.setItem('token', resp.resultset.token);
+                localStorage.setItem('userName', resp.resultset.userName);
               })
             );
   }

@@ -6,6 +6,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PagesComponent } from './pages.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppointmentsComponent } from './appointments/appointments.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule,
   ]
 })
 export class PagesModule { }
