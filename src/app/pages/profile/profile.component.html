@@ -1,0 +1,143 @@
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper d-flex justify-content-center">
+      <div *ngIf="user" class="og-wrapper">
+          <!-- Content Header (Page header) -->
+          <section class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1>Mi Perfil</h1>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+                    <li class="breadcrumb-item active">Mi Perfil</li>
+                  </ol>
+                </div>
+              </div>
+            </div><!-- /.container-fluid -->
+          </section>
+      
+          <!-- Main content -->
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-3">
+      
+                  <!-- Profile Image -->
+                  <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                      <div class="text-center">
+                        <img class="profile-user-img img-fluid img-circle"
+                             src="{{userImg}}"
+                             alt="User profile picture">
+                      </div>
+      
+                      <h3 class="profile-username text-center">{{user.userName}}</h3>
+
+                      <p class="text-center">{{user.userEmail}}</p>
+      
+                      <p class="text-muted text-center">{{user.userSpecialty}}</p>
+      
+                      <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                          <b>Consultas Activas</b> <a class="float-right">{{user.activeAppointments}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Consultas Terminadas</b> <a class="float-right">{{user.finishedAppointments}}</a>
+                        </li>
+                      </ul>
+      
+                      <a href="#" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+      
+                  <!-- <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Acerca de Mi</h3>
+                    </div>
+                    <div class="card-body">
+                      <strong><i class="fas fa-book mr-1"></i> Educación </strong>
+      
+                      <p class="text-muted">{{user.userSchool}}</p>
+      
+                      <hr>
+      
+                      <strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong>
+      
+                      <p class="text-muted">{{user.userLocation}}</p>
+      
+                      <hr>
+      
+                      <strong><i class="fa fa-phone mr-1"></i> Teléfono</strong>
+      
+                      <p class="text-muted">{{user.userPhone}}</p>
+      
+                      <hr>
+      
+                      <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+      
+                      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                    </div>
+                  </div> -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                  <div class="card">
+                    <div class="card-header p-2">
+                      <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active" href="#offer" data-toggle="tab">Información</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Historial</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Horario</a></li>
+                      </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="offer">
+                                <h5 class="tab-title">Información General</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong><i class="fas fa-book mr-1"></i> Educación </strong>
+                                        <p class="text-muted">{{user.userSchool}}</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong>
+                                        <p class="text-muted">{{user.userLocation}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong><i class="fa fa-phone mr-1"></i> Teléfono</strong>
+                                        <p class="text-muted">{{user.userPhone}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <strong>Tratamientos</strong>
+                                <ul>
+                                  <li *ngIf="user.userTreatments.length == 0">No se han especificado tratamientos.</li>
+                                  <li *ngFor="let treatment of user.userTreatments">{{treatment.treatment_name}}</li>
+                                </ul>
+        
+                                <strong>Mensaje de Introducción</strong>
+                                <!-- <p *ngIf="user.userTreatments.length == 0">No se han especificado tratamientos.</p> -->
+                                <p>{{user.userNotes}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                      <!-- /.card-body -->
+                  </div>
+                  <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </section>
+          <!-- /.content -->
+
+      </div>
+  </div>
+  <!-- /.content-wrapper -->

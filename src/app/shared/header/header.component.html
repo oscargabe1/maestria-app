@@ -18,7 +18,7 @@
             <a routerLink="/dashboard" class="nav-link">Inicio</a>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['appointments']" class="nav-link">Citas</a>
+            <a [routerLink]="['appointments']" class="nav-link">Consultas</a>
           </li>
          
         </ul>
@@ -64,7 +64,7 @@
             </div>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">{{userName}}</a>
+                <a [routerLink]="['profile']" class="nav-link">{{userName}}</a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link" data-toggle="dropdown" href="#">

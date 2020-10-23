@@ -21,6 +21,7 @@ export class UserService {
             .pipe(
               tap((resp:any) =>{
                 localStorage.setItem('token', resp.resultset.token);
+                localStorage.setItem('userID', resp.resultset.userID);
                 localStorage.setItem('userName', resp.resultset.userName);
               })
             );
@@ -31,6 +32,21 @@ export class UserService {
             .pipe(
               tap((resp:any) =>{
                 localStorage.setItem('token', resp.resultset.token);
+                localStorage.setItem('userID', resp.resultset.userID);
+                localStorage.setItem('userName', resp.resultset.userName);
+              })
+            );
+  }
+
+  getUser(){
+    const token = localStorage.getItem('token') || '';
+    return this.http.get(`${base_url}/api/endpoint/user/profile`,{
+              headers:{
+                'Authorization':token
+              }
+            }).pipe(
+              tap((resp:any) =>{
+              
               })
             );
   }
@@ -43,6 +59,8 @@ export class UserService {
               }
             }).pipe(
               tap((resp:any) =>{
+                localStorage.setItem('userName', resp.resultset.userName);
+                localStorage.setItem('userID', resp.resultset.userID);
               })
             );
   }

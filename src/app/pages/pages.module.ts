@@ -7,13 +7,15 @@ import { PagesComponent } from './pages.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     PagesComponent,
-    AppointmentsComponent
+    AppointmentsComponent,
+    ProfileComponent
   ],
   exports:[
     PagesComponent,

@@ -5,6 +5,7 @@ import { AuthGuard } from "../guards/auth.guard";
 import { PagesComponent } from "./pages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AppointmentsComponent } from './appointments/appointments.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
     {
@@ -14,6 +15,7 @@ const routes: Routes = [
         children:[
             {path: '', component: DashboardComponent, data:{title: 'Dashboard'}},
             {path: 'appointments', component: AppointmentsComponent, data:{title: 'Dashboard'}},
+            {path: 'profile', component: ProfileComponent, data:{title: 'Dashboard'}},
         ]
     },
   ];

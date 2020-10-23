@@ -16,9 +16,16 @@ export class AuthGuard implements CanActivate {
             .pipe(
               tap(isAuthenticated =>{
 
+                let userID = localStorage.getItem('userID');
+
                 if(isAuthenticated.statusCode != 0){
                   this.router.navigateByUrl('/login');
                 }
+
+                // if(isAuthenticated.resultset.userID != userID){
+                //   this.router.navigateByUrl('/login');
+                // }
+
 
               }),
               map(resp =>true),
