@@ -37,7 +37,7 @@
 
                       <p class="text-center">{{user.userEmail}}</p>
       
-                      <p class="text-muted text-center">{{user.userSpecialty}}</p>
+                      <p class="text-muted text-center">{{user.userSpecialty.specialty_name}}</p>
       
                       <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item">
@@ -48,7 +48,7 @@
                         </li>
                       </ul>
       
-                      <a href="#" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
+                      <a [routerLink]="['edit']" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
                     </div>
                     <!-- /.card-body -->
                   </div>

@@ -8,6 +8,9 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
+import { UsersEditComponent } from './users/users-edit/users-edit.component';
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { ProfileComponent } from './profile/profile.component';
     DashboardComponent,
     PagesComponent,
     AppointmentsComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsersComponent,
+    UsersEditComponent,
+    ProfileEditComponent
   ],
   exports:[
     PagesComponent,

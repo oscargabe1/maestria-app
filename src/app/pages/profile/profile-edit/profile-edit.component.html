@@ -1,0 +1,125 @@
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper d-flex justify-content-center">
+    <div *ngIf="user" class="og-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Mi Perfil</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+                  <li class="breadcrumb-item"><a routerLink="/dashboard/profile">Mi Perfil</a></li>
+                  <li class="breadcrumb-item active">Editar</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">Editar Mi Perfil</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><strong><i class="fas fa-user mr-1"></i> Nombre </strong></label>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre completo">
+                      </div>
+
+                      
+                      <!-- /.form-group -->
+                      <div class="form-group">
+                        <label><strong><i class="fas fa-book mr-1"></i> Educación </strong></label>
+                        <input type="text" class="form-control" name="school" placeholder="Tu universidad y en qué semestre vas">
+                      </div>
+                      <!-- /.form-group -->
+
+                       <!-- /.form-group -->
+                       <div class="form-group">
+                        <label><strong><i class="fa fa-phone mr-1"></i> Teléfono</strong></label>
+                        <input type="text" class="form-control" name="phone" placeholder="Tu teléfono">
+                      </div>
+                      <!-- /.form-group -->
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><strong><i class="fas fa-stethoscope mr-1"></i> Área </strong></label>
+                            <select class="form-control select2" style="width: 100%;" name="specialty">
+                                <option value="" disabled selected>Área de salud en la que ofreces consultas.</option>
+                                <option *ngFor="let spec of specialties" value="spec.specialtyID">{{spec.specialtyName}}</option>
+                            </select>
+                            </div>
+                      <!-- /.form-group -->
+                      <div class="form-group">
+                        <label><strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong></label>
+                        <input type="text" class="form-control" name="location" placeholder="Lugar en donde ofreces consultas">
+                      </div>
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+      
+                  <h5>Custom Color Variants</h5>
+                  <div class="row">
+                    <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Minimal (.select2-danger)</label>
+                        <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                          <option selected="selected">Alabama</option>
+                          <option>Alaska</option>
+                          <option>California</option>
+                          <option>Delaware</option>
+                          <option>Tennessee</option>
+                          <option>Texas</option>
+                          <option>Washington</option>
+                        </select>
+                      </div>
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Multiple (.select2-purple)</label>
+                        <div class="select2-purple">
+                          <select class="select2" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                            <option>Alabama</option>
+                            <option>Alaska</option>
+                            <option>California</option>
+                            <option>Delaware</option>
+                            <option>Tennessee</option>
+                            <option>Texas</option>
+                            <option>Washington</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+                  the plugin.
+                </div>
+              </div>
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+
+    </div>
+</div>
+<!-- /.content-wrapper -->
