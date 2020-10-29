@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PagesComponent } from './pages.component';
@@ -11,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
 import { UsersEditComponent } from './users/users-edit/users-edit.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -31,6 +33,9 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
     CommonModule,
     RouterModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class PagesModule { }

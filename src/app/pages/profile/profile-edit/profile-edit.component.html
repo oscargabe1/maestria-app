@@ -27,94 +27,93 @@
                   <h3 class="card-title">Editar Mi Perfil</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label><strong><i class="fas fa-user mr-1"></i> Nombre </strong></label>
-                        <input type="text" class="form-control" name="name" placeholder="Nombre completo">
-                      </div>
+                <form method="post"
+                  autocomplete="off" 
+                  [formGroup]="userForm"
+                  (ngSubmit)="postUser()"
+                  (keydown.enter)="$event.preventDefault()">
 
-                      
-                      <!-- /.form-group -->
-                      <div class="form-group">
-                        <label><strong><i class="fas fa-book mr-1"></i> Educación </strong></label>
-                        <input type="text" class="form-control" name="school" placeholder="Tu universidad y en qué semestre vas">
-                      </div>
-                      <!-- /.form-group -->
-
-                       <!-- /.form-group -->
-                       <div class="form-group">
-                        <label><strong><i class="fa fa-phone mr-1"></i> Teléfono</strong></label>
-                        <input type="text" class="form-control" name="phone" placeholder="Tu teléfono">
-                      </div>
-                      <!-- /.form-group -->
-
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-6">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
                         <div class="form-group">
-                            <label><strong><i class="fas fa-stethoscope mr-1"></i> Área </strong></label>
-                            <select class="form-control select2" style="width: 100%;" name="specialty">
-                                <option value="" disabled selected>Área de salud en la que ofreces consultas.</option>
-                                <option *ngFor="let spec of specialties" value="spec.specialtyID">{{spec.specialtyName}}</option>
-                            </select>
-                            </div>
-                      <!-- /.form-group -->
-                      <div class="form-group">
-                        <label><strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong></label>
-                        <input type="text" class="form-control" name="location" placeholder="Lugar en donde ofreces consultas">
+                          <label><strong><i class="fas fa-user mr-1"></i> Nombre </strong></label>
+                          <input type="text" class="form-control" placeholder="Nombre completo" formControlName="name">
+                        </div>
+  
+                        
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <label><strong><i class="fas fa-book mr-1"></i> Educación </strong></label>
+                          <input type="text" class="form-control" placeholder="Tu universidad y en qué semestre vas" formControlName="school">
+                        </div>
+                        <!-- /.form-group -->
+  
+                         <!-- /.form-group -->
+                         <div class="form-group">
+                          <label><strong><i class="fa fa-phone mr-1"></i> Teléfono</strong></label>
+                          <input type="text" class="form-control"  placeholder="Tu teléfono" formControlName="phone">
+                        </div>
+                        <!-- /.form-group -->
+  
                       </div>
-                      <!-- /.form-group -->
-                    </div>
-                    <!-- /.col -->
-                  </div>
-                  <!-- /.row -->
-      
-                  <h5>Custom Color Variants</h5>
-                  <div class="row">
-                    <div class="col-12 col-sm-6">
-                      <div class="form-group">
-                        <label>Minimal (.select2-danger)</label>
-                        <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                          <option selected="selected">Alabama</option>
-                          <option>Alaska</option>
-                          <option>California</option>
-                          <option>Delaware</option>
-                          <option>Tennessee</option>
-                          <option>Texas</option>
-                          <option>Washington</option>
-                        </select>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label><strong><i class="fas fa-stethoscope mr-1"></i> Área </strong></label>
+                              <select class="form-control select2" style="width: 100%;" formControlName="specialty">
+                                  <option value="" disabled>Área de salud en la que ofreces consultas.</option>
+                                  <option *ngFor="let spec of specialties" [value]="spec.specialtyID">{{spec.specialtyName}}</option>
+                              </select>
+                              </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <label><strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong></label>
+                          <input type="text" class="form-control" placeholder="Lugar en donde ofreces consultas" formControlName="location">
+                        </div>
+                        <!-- /.form-group -->
                       </div>
-                      <!-- /.form-group -->
+                      <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-12 col-sm-6">
-                      <div class="form-group">
-                        <label>Multiple (.select2-purple)</label>
-                        <div class="select2-purple">
-                          <select class="select2" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
-                            <option>Alabama</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                          </select>
+                    <!-- /.row -->
+                    <hr>
+  
+                    <div class="row">
+                      <div id="formBox" class="col-lg-6">
+                        <label><strong>Tratamientos </strong></label>
+  
+                        <ul class="list-group">
+                          <li *ngFor="let treatment of user.userTreatments" class="list-group-item d-flex justify-content-between align-items-center">
+                            {{treatment.treatment_name}}
+                            <a class="btn btn-secondary text-white" (click)="deleteTreatment(treatment.pk_treatment)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                          </li>
+                        </ul>
+  
+                        <ul class="list-group mt-2">
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input type="text" class="form-control mr-3" (input)="nTreatment=$event.target.value" 
+                                    name="nTreatment" placeholder="Agregar tratamiento" value="{{nTreatment}}" (keydown.enter)="addTreatment()">
+                            <a class="btn btn-primary text-white" (click)="addTreatment()" [class.disable]="nTreatment.length < 2"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+          
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label><strong>Mensaje de Introducción </strong></label>
+                            <textarea class="form-control" formControlName="notes" id="" cols="30" rows="10" placeholder="Mensaje que se mostrará al entrar a tu perfil"></textarea>
                         </div>
                       </div>
-                      <!-- /.form-group -->
                     </div>
-                    <!-- /.col -->
+        
+  
+  
                   </div>
-                  <!-- /.row -->
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                  the plugin.
-                </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer clearfix">
+                    <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save mr-1"></i> Guardar</button>
+                  </div>
+                </form>
               </div>
           </div><!-- /.container-fluid -->
         </section>
