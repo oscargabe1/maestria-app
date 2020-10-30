@@ -1,6 +1,6 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper d-flex justify-content-center">
-      <div *ngIf="user" class="og-wrapper">
+      <div *ngIf="user && appointments" class="og-wrapper">
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <div class="container-fluid">
@@ -127,7 +127,40 @@
 
                             <div class="tab-pane" id="history">
                               <h5 class="tab-title">Historial de Consultas</h5>
-                              <p class="text-muted">Aun no tiene consultas.</p>
+                              <p *ngIf="appointments.length == 0" class="text-muted">Aun no tiene consultas.</p>
+
+                              <div *ngIf="appointments.length > 0">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <ul class="list-group list-group-flush">
+
+                                      <li *ngFor="let appointment of appointments" class="list-group-item">
+                                        <div class="row">
+                                          <div class="col-4">
+                                            <p>Folio de consulta : <span class="text-muted">#{{appointment.appointmentID}}</span></p>
+                                          </div>
+                                          <div class="col-6">
+                                            <p>Tratamiento : <span class="text-muted">{{appointment.appointmentTreatment}}</span></p>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-4">
+                                            <p class="text-muted">{{appointment.appointmentStartDate | date:'medium'}}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <p>Paciente : <span class="text-muted">{{appointment.appointmentUser}}</span></p>
+                                          </div>
+                                        </div>
+                                      </li>
+
+                                    </ul>
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                              
                           </div>
                         </div>
 
@@ -140,10 +173,10 @@
                 <div *ngIf="user.userType == 3" class="col-md-9">
                   <div class="card">
                     
-                    <div class="card-body">
+                    <div  class="card-body">
                         <div class="tab-content">
                               <h5 class="tab-title">Historial de Consultas</h5>
-                              <p class="text-muted">Aun no tiene consultas.</p>
+                              <p *ngIf="appointments.length == 0" class="text-muted">Aun no tiene consultas.</p>
                         </div>
                     </div>
                   </div>

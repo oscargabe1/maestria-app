@@ -1,5 +1,24 @@
+.login-logo{
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
 @media screen and (min-width: 800px) {
     .login-box{
         margin-left: 40%;
     }
+    .backgroundImg{
+        background-image: url('../../../assets/img/background2.jpg');
+        background-position: center top;
+        background-size: 100% auto;
+    }
 }
+
+@media screen and (max-width: 800px) {
+    .backgroundImg{
+        background-color: #afe3d6;
+    }
+    .rememberBox{
+       margin-bottom: 10px;
+    }
+}
+
