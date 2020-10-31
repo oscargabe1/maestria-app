@@ -5,6 +5,8 @@ import { AuthGuard } from "../guards/auth.guard";
 import { PagesComponent } from "./pages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AppointmentsComponent } from './appointments/appointments.component';
+import { AppointmentDetailComponent } from "./appointments/appointment-detail/appointment-detail.component";
+import { AppointmentEditComponent } from "./appointments/appointment-edit/appointment-edit.component";
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from "./profile/profile-edit/profile-edit.component";
 import { UsersComponent } from "./users/users.component";
@@ -17,11 +19,13 @@ const routes: Routes = [
         canActivate:[AuthGuard],
         children:[
             {path: '', component: DashboardComponent, data:{title: 'Dashboard'}},
-            {path: 'appointments', component: AppointmentsComponent, data:{title: 'Dashboard'}},
             {path: 'profile', component: ProfileComponent, data:{title: 'Dashboard'}},
             {path: 'profile/edit', component: ProfileEditComponent, data:{title: 'Dashboard'}},
-            {path: 'user/:id', component: UsersComponent, data:{title: 'Dashboard'}},
-            {path: 'user/edit/:id', component: UsersEditComponent, data:{title: 'Dashboard'}},
+            {path: 'appointments', component: AppointmentsComponent, data:{title: 'Dashboard'}},
+            {path: 'appointments/:id', component: AppointmentDetailComponent, data:{title: 'Dashboard'}},
+            {path: 'appointments/edit/:id', component: AppointmentEditComponent, data:{title: 'Dashboard'}},
+            // {path: 'user/:id', component: UsersComponent, data:{title: 'Dashboard'}},
+            // {path: 'user/edit/:id', component: UsersEditComponent, data:{title: 'Dashboard'}},
         ]
     },
   ];

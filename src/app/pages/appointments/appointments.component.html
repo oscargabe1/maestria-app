@@ -1,1 +1,205 @@
-<p>appointments works!</p>
+<div class="content-wrapper d-flex justify-content-center">
+    <div class="og-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1>Consultas</h1>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+                    <li class="breadcrumb-item active">Consultas</li>
+                  </ol>
+                </div>
+              </div>
+            </div><!-- /.container-fluid -->
+          </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">Consultas Activas</h3>
+                              <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
+                                <!-- <button class=".d-lg-none .d-xl-block" type="button" class="btn btn-primary"><i class="fas fa-plus mr-1"></i> Agendar Consulta</button> -->
+                                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                              </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th style="width: 10px">Folio</th>
+                                    <th class="d-none d-sm-table-cell">Tratamiento</th>
+                                    <th class="d-none d-sm-table-cell">Fecha</th>
+                                    <th class="d-none d-sm-table-cell">Paciente</th>
+                                    <th class="d-md-none">Datos</th>
+                                    <th style="width: 20px">Acciones</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+
+                                  <tr *ngFor="let appointment of activeAppointments"> 
+                                    <td>{{appointment.appointmentID}}</td>
+                                    <td class="d-none d-sm-table-cell">{{appointment.appointmentTreatment}}</td>
+                                
+                                    <td class="d-none d-sm-table-cell">{{appointment.appointmentStartDate | date:'medium'}}</td>
+                                    <td class="d-none d-sm-table-cell">{{appointment.appointmentUser}}</td>
+                                    <td class="d-md-none">
+                                      <div class="btn-group">
+                                        
+                                        <button type="button" class="btn btn-default" data-toggle="dropdown">
+                                          <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                          <div class="dropdown-menu" role="menu">
+                                            <a class="dropdown-item" href="#">Tratamiento: {{appointment.appointmentTreatment}}</a>
+                                            <a class="dropdown-item" href="#">Paciente: {{appointment.appointmentUser}}</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">{{appointment.appointmentStartDate | date:'medium'}}</a>
+                                          </div>
+                                        </button>
+                                      </div>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a [routerLink]="[appointment.appointmentID]" type="button" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a [routerLink]="['edit/',appointment.appointmentID]" type="button" class="btn btn-default"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                            <a type="button" (click)="cancelAppointment(appointment.appointmentID)" class="btn btn-default"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        </div>
+                                    </td>
+                                  </tr>
+                                
+                                  
+                                </tbody>
+                              </table>
+                              
+                              <p *ngIf="activeAppointments.length == 0" class="ml-3 mt-3 text-muted">No hay consultas activas actualmente.</p>    
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                    </div>
+                </div>
+
+               <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li  class="nav-item"><a class="nav-link active" href="#finished" data-toggle="tab">Consultas Terminadas</a></li>
+                                    <li  class="nav-item"><a class="nav-link" href="#canceled" data-toggle="tab">Consultas Canceladas</a></li>
+                                </ul>
+                            </div>
+              
+                            <div class="card-body p-0">
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="finished">
+                                      <table class="table table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th style="width: 10px">Folio</th>
+                                            <th class="d-none d-sm-table-cell">Tratamiento</th>
+                                            <th class="d-none d-sm-table-cell">Fecha</th>
+                                            <th class="d-none d-sm-table-cell">Paciente</th>
+                                            <th class="d-md-none">Datos</th>
+                                            <th style="width: 20px">Acciones</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+        
+                                          <tr *ngFor="let appointment of finishedAppointments"> 
+                                            <td>{{appointment.appointmentID}}</td>
+                                            <td class="d-none d-sm-table-cell">{{appointment.appointmentTreatment}}</td>
+                                        
+                                            <td class="d-none d-sm-table-cell">{{appointment.appointmentStartDate | date:'medium'}}</td>
+                                            <td class="d-none d-sm-table-cell">{{appointment.appointmentUser}}</td>
+                                            <td class="d-md-none">
+                                              <div class="btn-group">
+                                                
+                                                <button type="button" class="btn btn-default" data-toggle="dropdown">
+                                                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                  <div class="dropdown-menu" role="menu">
+                                                    <a class="dropdown-item" href="#">Tratamiento: {{appointment.appointmentTreatment}}</a>
+                                                    <a class="dropdown-item" href="#">Paciente: {{appointment.appointmentUser}}</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="#">{{appointment.appointmentStartDate | date:'medium'}}</a>
+                                                  </div>
+                                                </button>
+                                              </div>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a [routerLink]="[appointment.appointmentID]" type="button" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                    <a [routerLink]="['edit/',appointment.appointmentID]" type="button" class="btn btn-default"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                        
+                                          
+                                        </tbody>
+                                      </table>
+                                      <p *ngIf="finishedAppointments.length == 0" class="ml-3 mt-3 text-muted">No hay consultas terminadas.</p>
+                                    </div>
+
+                                    <div class="tab-pane" id="canceled">
+                                      <table class="table table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th style="width: 10px">Folio</th>
+                                            <th class="d-none d-sm-table-cell">Tratamiento</th>
+                                            <th class="d-none d-sm-table-cell">Fecha</th>
+                                            <th class="d-none d-sm-table-cell">Paciente</th>
+                                            <th class="d-md-none">Datos</th>
+                                            <th style="width: 20px">Acciones</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+        
+                                          <tr *ngFor="let appointment of canceledAppointments"> 
+                                            <td>{{appointment.appointmentID}}</td>
+                                            <td class="d-none d-sm-table-cell">{{appointment.appointmentTreatment}}</td>
+                                        
+                                            <td class="d-none d-sm-table-cell">{{appointment.appointmentStartDate | date:'medium'}}</td>
+                                            <td class="d-none d-sm-table-cell">{{appointment.appointmentUser}}</td>
+                                            <td class="d-md-none">
+                                              <div class="btn-group">
+                                                
+                                                <button type="button" class="btn btn-default" data-toggle="dropdown">
+                                                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                  <div class="dropdown-menu" role="menu">
+                                                    <a class="dropdown-item" href="#">Tratamiento: {{appointment.appointmentTreatment}}</a>
+                                                    <a class="dropdown-item" href="#">Paciente: {{appointment.appointmentUser}}</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="#">{{appointment.appointmentStartDate | date:'medium'}}</a>
+                                                  </div>
+                                                </button>
+                                              </div>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a [routerLink]="[appointment.appointmentID]" type="button" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                    <a [routerLink]="['edit/',appointment.appointmentID]" type="button" class="btn btn-default"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                        
+                                          
+                                        </tbody>
+                                      </table>
+                                      <p *ngIf="canceledAppointments.length == 0" class="ml-3 mt-3 text-muted">No hay consultas canceladas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                          </div>
+                    </div>
+                </div> 
+            </div>
+        </section>
+    </div>
+</div>

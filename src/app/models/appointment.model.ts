@@ -6,7 +6,8 @@ export class Appointment {
         public appointmentTreatment: string,
         public appointmentNotes: string,
         public appointmentStartDate: number,
-        public appointmentEndDate: number,
-        public appointmentStatus: number,
+        public appointmentEndDate: any,
+        public appointmentStatus: any,
+        public appointmentEndTimestamp?: any,
     ){}
 }

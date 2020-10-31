@@ -13,6 +13,8 @@ import { UsersComponent } from './users/users.component';
 import { UsersEditComponent } from './users/users-edit/users-edit.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppointmentDetailComponent } from './appointments/appointment-detail/appointment-detail.component';
+import { AppointmentEditComponent } from './appointments/appointment-edit/appointment-edit.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     UsersComponent,
     UsersEditComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    AppointmentDetailComponent,
+    AppointmentEditComponent
   ],
   exports:[
     PagesComponent,
