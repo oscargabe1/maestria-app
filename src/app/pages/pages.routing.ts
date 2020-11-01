@@ -6,6 +6,7 @@ import { PagesComponent } from "./pages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { AppointmentDetailComponent } from "./appointments/appointment-detail/appointment-detail.component";
+import { AppointmentAddComponent } from "./appointments/appointment-add/appointment-add.component";
 import { AppointmentEditComponent } from "./appointments/appointment-edit/appointment-edit.component";
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from "./profile/profile-edit/profile-edit.component";
@@ -22,8 +23,9 @@ const routes: Routes = [
             {path: 'profile', component: ProfileComponent, data:{title: 'Dashboard'}},
             {path: 'profile/edit', component: ProfileEditComponent, data:{title: 'Dashboard'}},
             {path: 'appointments', component: AppointmentsComponent, data:{title: 'Dashboard'}},
-            {path: 'appointments/:id', component: AppointmentDetailComponent, data:{title: 'Dashboard'}},
+            {path: 'appointments/detail/:id', component: AppointmentDetailComponent, data:{title: 'Dashboard'}},
             {path: 'appointments/edit/:id', component: AppointmentEditComponent, data:{title: 'Dashboard'}},
+            {path: 'appointments/add', component: AppointmentAddComponent, data:{title: 'Dashboard'}},
             // {path: 'user/:id', component: UsersComponent, data:{title: 'Dashboard'}},
             // {path: 'user/edit/:id', component: UsersEditComponent, data:{title: 'Dashboard'}},
         ]

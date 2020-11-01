@@ -1,0 +1,12 @@
+.og-wrapper{
+    width: 1000px;
+}
+.og-toggled{
+    background-color: lightgray;
+}
+.tab-title{
+    margin-bottom: 15px;
+}
+.li-title{
+    list-style-type: none; 
+}

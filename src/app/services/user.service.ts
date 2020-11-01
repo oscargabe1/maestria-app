@@ -53,6 +53,19 @@ export class UserService {
             );
   }
 
+  getDoctorsPatients(){
+    const token = localStorage.getItem('token') || '';
+    return this.http.get(`${base_url}/api/endpoint/doctorsPatients`,{
+              headers:{
+                'Authorization':token
+              }
+            }).pipe(
+              tap((resp:any) =>{
+              
+              })
+            );
+  }
+
   postUser(formData: UserForm){
     const token = localStorage.getItem('token') || '';
     return this.http.post(`${base_url}/api/endpoint/user/profile`, formData,{

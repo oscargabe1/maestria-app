@@ -15,6 +15,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentDetailComponent } from './appointments/appointment-detail/appointment-detail.component';
 import { AppointmentEditComponent } from './appointments/appointment-edit/appointment-edit.component';
+import { AppointmentAddComponent } from './appointments/appointment-add/appointment-add.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AppointmentEditComponent } from './appointments/appointment-edit/appoin
     UsersEditComponent,
     ProfileEditComponent,
     AppointmentDetailComponent,
-    AppointmentEditComponent
+    AppointmentEditComponent,
+    AppointmentAddComponent
   ],
   exports:[
     PagesComponent,

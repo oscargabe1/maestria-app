@@ -32,59 +32,63 @@
   
                     <div class="card-body">
                       <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-6">
                           <div class="form-group">
                             <label><strong><i class="fa fa-hashtag mr-1"></i> Folio </strong></label>
                             <input  type="number" class="form-control" formControlName="id" [readonly]="true">
                           </div>
-    
-                          
-                          <!-- /.form-group -->
+                        </div>
+
+                        <div class="col-6">
                           <div class="form-group">
                             <label><strong><i class="fa fa-user mr-1"></i> Paciente </strong></label>
                             <input  type="text" class="form-control" formControlName="user">
                           </div>
-                          <!-- /.form-group -->
-    
-                           <!-- /.form-group -->
-                           <div class="form-group">
-                            <label><strong><i class="fa fa-pen-square mr-1"></i> Status</strong></label>
-                            <input  type="text" class="form-control"  formControlName="status">
-                          </div>
-                          <!-- /.form-group -->
-    
                         </div>
-                        <!-- /.col -->
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><strong><i class="fa fa-calendar mr-1"></i> Fecha de Inicio </strong></label>
-                                <input  type="text" class="form-control" formControlName="start_date">
-                                </div>
-                          <!-- /.form-group -->
-                          <div class="form-group">
-                            <label><strong><i class="fa fa-calendar mr-1"></i> Fecha Final</strong></label>
-                            <input type="datetime-local" class="form-control" placeholder="La fecha y hora en que terminó la consulta" formControlName="end_date">
-                          </div>
-                          <!-- /.form-group -->
-                        </div>
-                        <!-- /.col -->
                       </div>
+                      <div class="row">
+                 
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label><strong><i class="fa fa-calendar mr-1"></i> Fecha de Inicio </strong></label>
+                              <input  type="text" class="form-control" formControlName="start_date">
+                            </div>
+                          </div>
+
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label><strong><i class="fa fa-calendar mr-1"></i> Fecha Final</strong></label>
+                              <input type="datetime-local" class="form-control" placeholder="La fecha y hora en que terminó la consulta" formControlName="end_date">
+                            </div>
+                          </div>
+
+  
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label><strong><i class="fa fa-pen-square mr-1"></i> Status</strong></label>
+                              <input  type="text" class="form-control"  formControlName="status">
+                            </div>
+                          </div>
+                          
+                        </div>
+       
+                      
                       <!-- /.row -->
                       <hr>
     
                       <div class="row">
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
                               <label><strong>Tratamiento </strong></label>
-                              <input type="text" class="form-control" placeholder="El tratamiento realizado en la consulta" formControlName="treatment">
+                              <input type="text" class="form-control" placeholder="Tratamiento que se realizará en la consulta" formControlName="treatment">
                             </div>
                           </div>
             
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                           <div class="form-group">
-                            <label><strong>Mensaje de Introducción </strong></label>
-                              <textarea class="form-control" formControlName="notes" id="" cols="30" rows="10" placeholder="Notas de la consulta"></textarea>
+                            <label><strong>Notas de la Consulta </strong></label>
+                              <textarea class="form-control" formControlName="notes" id="" cols="30" rows="5" placeholder="Notas de la consulta"></textarea>
                           </div>
                         </div>
                       </div>

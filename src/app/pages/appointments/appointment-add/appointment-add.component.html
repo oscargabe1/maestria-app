@@ -1,0 +1,135 @@
+<div class="content-wrapper d-flex justify-content-center">
+    <div class="og-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1>Consultas</h1>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/dashboard/appointments">Consultas</a></li>
+                    <li class="breadcrumb-item active">Crear Consulta</li>
+                  </ol>
+                </div>
+              </div>
+            </div><!-- /.container-fluid -->
+          </section>
+
+          <section class="content">
+            <div class="container-fluid">
+              <div class="card card-default">
+                  <div class="card-header">
+                    <h3 class="card-title">Crear Consulta</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <form method="post"
+                    autocomplete="off" 
+                    [formGroup]="appointmentForm"
+                    (ngSubmit)="postAppointment()"
+                    (keydown.enter)="$event.preventDefault()">
+  
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label><strong><i class="fa fa-user-md mr-1"></i> Doctor </strong></label>
+                            <input *ngIf="type == 2" type="text" class="form-control" formControlName="doctor" [readonly]="type == 2">
+                            <select *ngIf="type == 3" class="form-control select2" style="width: 100%;" formControlName="doctor">
+                                <option value="" disabled selected>Doctor que realizará la consulta</option>
+                                <option *ngFor="let user of others" [value]="user.userID">{{user.userName}} - {{user.userSpecialty}}</option>
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-user mr-1"></i> Paciente </strong></label>
+                                <input *ngIf="type == 3" type="text" class="form-control" formControlName="user" [readonly]="type == 3">
+                                <select *ngIf="type == 2" class="form-control select2" style="width: 100%;" formControlName="user">
+                                    <option value="" disabled selected>Paciente que recibirá la consulta</option>
+                                    <option *ngFor="let user of others" [value]="user.userID">{{user.userName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- /.row -->
+                      <hr>
+    
+                      <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                              <label><strong>Tratamiento </strong></label>
+                              <input type="text" class="form-control" placeholder="El tratamiento realizado en la consulta" formControlName="treatment">
+                            </div>
+                          </div>
+            
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <label><strong>Notas de la Consulta </strong></label>
+                              <textarea class="form-control" formControlName="notes" id="" cols="30" rows="5" placeholder="Notas de la consulta"></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <ul class="nav nav-pills">
+                                <li *ngFor="let week of schedule" class="nav-item"><a class="nav-link" [ngClass] = "week.active" [attr.href]="'#' + week.tab" data-toggle="tab">{{week.title}}</a></li>
+                              </ul>
+                            </div>
+                            <div class="card-body">
+                              <div class="tab-content">
+                                <div *ngFor="let week of schedule" class="tab-pane" [ngClass] = "week.active" [id]="week.tab">
+
+                                  <table class="table table-sm">
+                                    <thead>
+                                      <tr>
+                                        <th style="width: 100px;" *ngFor="let day of week.days">{{day.name}} <span class="text-muted">- {{day.number}}</span></th>
+                                        
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td *ngFor="let day of week.days">
+                                          <div *ngFor ="let hour of day.hours" class="row mb-1">
+                                            <a class="btn btn-light" [class.disabled] = "hour.disabled" [id]="hour.timestamp" (click)="toggleButtons(hour.timestamp)"
+                                            [ngClass] = "{'og-toggled': hour.timestamp == toggledButton}"
+                                             >{{hour.display}}</a>
+                                          </div>
+                                        </td>
+                                    
+                                      </tr>
+                                      
+                                    </tbody>
+                                  </table>
+
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          
+    
+    
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                      <div class="float-right">
+                        <a type="button" routerLink="/dashboard/appointments" class="btn btn-primary text-white mr-2"><i class="fas fa-chevron-left mr-1"></i> Volver</a>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-1"></i> Guardar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div><!-- /.container-fluid -->
+          </section>
+
+    </div>
+</div>
