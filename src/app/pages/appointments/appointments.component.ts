@@ -13,6 +13,7 @@ export class AppointmentsComponent implements OnInit {
   activeAppointments:Array<Appointment>;
   finishedAppointments:Array<Appointment>;
   canceledAppointments:Array<Appointment>;
+  loaded = false;
 
   constructor(public appointmentService:AppointmentService) { }
 
@@ -42,6 +43,8 @@ export class AppointmentsComponent implements OnInit {
         console.log(this.activeAppointments);
         console.log(this.finishedAppointments);
         console.log(this.canceledAppointments);
+
+        this.loaded = true;
 
       })
   }

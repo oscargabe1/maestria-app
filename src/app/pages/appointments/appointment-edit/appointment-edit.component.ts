@@ -123,8 +123,10 @@ export class AppointmentEditComponent implements OnInit {
       console.log("POST");
       if(resp.statusCode == 0){
         //Navegar al Dashboard
-        this.router.navigateByUrl('/dashboard/appointments');
         Swal.fire('OK', 'La información ha sido actualizada.', 'success');
+        setTimeout(() => {
+          this.router.navigateByUrl('/dashboard/appointments');
+        }, 1000);
       } else{
         console.warn(resp.statusMessage);
       }
@@ -134,5 +136,3 @@ export class AppointmentEditComponent implements OnInit {
   }
 
 }
-// "2020-10-30T15:44"
-// 2020-10-30T21:37:00.000Z

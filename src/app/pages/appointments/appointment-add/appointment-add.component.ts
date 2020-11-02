@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Appointment } from "../../../models/appointment.model";
 import { User } from "../../../models/user.model";
 import { AppointmentService } from "../../../services/appointment.service";
+import { ScheduleService } from "../../../services/schedule.service";
 import { UserService } from "../../../services/user.service";
 
 @Component({
@@ -20,6 +21,9 @@ export class AppointmentAddComponent implements OnInit {
   others:Array<User>;
   type:number;
   toggledButton;
+
+  doctor:number;
+
 
   public appointmentForm = this.fb.group({
     user: ['', [Validators.required]],
@@ -277,7 +281,7 @@ export class AppointmentAddComponent implements OnInit {
       this.week2];
   
 
-  constructor(private activatedRoute:ActivatedRoute, public appointmentService:AppointmentService, public userService:UserService, private fb: FormBuilder, public router:Router) { }
+  constructor(private activatedRoute:ActivatedRoute, public appointmentService:AppointmentService, public userService:UserService, public scheduleService:ScheduleService, private fb: FormBuilder, public router:Router) { }
 
   ngOnInit() {
     this.getDoctorsPatients();
@@ -293,6 +297,22 @@ export class AppointmentAddComponent implements OnInit {
         this.type = resp.resultset.selfUserType;
 
         this.populateFields();
+        if(this.type == 2){
+          this.switchDoctor(this.user.userID);
+        }
+      })
+  }
+
+  switchDoctor(doctorID:number){
+    this.doctor = doctorID;
+    this.getSchedule(doctorID);
+  }
+
+  getSchedule(doctorID:number){
+    this.scheduleService.getSchedule(doctorID)
+      .subscribe(resp =>{
+        console.log(resp);
+        this.schedule = resp.resultset; 
       })
   }
 
@@ -304,9 +324,34 @@ export class AppointmentAddComponent implements OnInit {
     }
   }
 
+
   toggleButtons(buttonID){
     console.log(buttonID);
     this.toggledButton = buttonID;
+    this.appointmentForm.controls['start_date'].setValue(this.toggledButton);
     console.log(this.toggledButton);
+  }
+
+  postAppointment(){
+    this.appointmentForm.controls['doctor'].setValue(this.user.userID);
+
+    if (this.appointmentForm.valid) {
+      this.appointmentService.addAppointment(this.appointmentForm.value)
+      .subscribe(resp => {
+        console.log(resp);
+        console.log("POST");
+        if(resp.statusCode == 0){
+          //Navegar al Dashboard
+          Swal.fire('OK', 'La consulta ha sido creada.', 'success');
+          setTimeout(() => {
+            this.router.navigateByUrl('/dashboard/appointments');
+          }, 1000);
+        } else{
+          console.warn(resp.statusMessage);
+        }
+      }, err =>{
+        console.warn(err);
+      })
+    }
   }
 }

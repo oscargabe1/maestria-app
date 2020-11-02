@@ -76,6 +76,7 @@
 
                       <div class="row">
                         <div class="col-12">
+                          <label><strong>Hora de la Consulta </strong></label>
                           <div class="card">
                             <div class="card-header">
                               <ul class="nav nav-pills">
@@ -123,7 +124,7 @@
                     <div class="card-footer clearfix">
                       <div class="float-right">
                         <a type="button" routerLink="/dashboard/appointments" class="btn btn-primary text-white mr-2"><i class="fas fa-chevron-left mr-1"></i> Volver</a>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-1"></i> Guardar</button>
+                        <button type="submit" class="btn btn-primary" [class.disabled]="appointmentForm.invalid"><i class="fas fa-save mr-1"></i> Guardar</button>
                       </div>
                     </div>
                   </form>

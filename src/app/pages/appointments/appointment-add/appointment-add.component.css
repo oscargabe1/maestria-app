@@ -2,8 +2,14 @@
     width: 1000px;
 }
 .og-toggled{
-    background-color: lightgray;
+    background-color: #007bff;
+    color:white;
 }
+.og-toggled:hover{
+    background-color: #007bff;
+    color:white;
+}
+ 
 .tab-title{
     margin-bottom: 15px;
 }

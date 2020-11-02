@@ -53,6 +53,19 @@ export class AppointmentService {
             );
   }
 
+  addAppointment(appointment: AppointmentForm){
+    const token = localStorage.getItem('token') || '';
+    return this.http.post(`${base_url}/api/endpoint/appointments/add`, appointment,{
+              headers:{
+                'Authorization':token
+              }
+            }).pipe(
+              tap((resp:any) =>{
+
+              })
+            );
+  }
+
   cancelAppointment(appointment){
     const token = localStorage.getItem('token') || '';
     console.log(appointment);
