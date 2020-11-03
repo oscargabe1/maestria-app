@@ -114,13 +114,13 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <strong>Tratamientos</strong>
+                                <strong><i class="fa fa-stethoscope mr-1"></i>Tratamientos</strong>
                                 <ul>
                                   <li *ngIf="user.userTreatments.length == 0">No se han especificado tratamientos.</li>
                                   <li *ngFor="let treatment of user.userTreatments">{{treatment.treatment_name}}</li>
                                 </ul>
         
-                                <strong>Mensaje de Introducción</strong>
+                                <strong><i class="fa fa-comment mr-1"></i>Mensaje de Introducción</strong>
                                 <!-- <p *ngIf="user.userTreatments.length == 0">No se han especificado tratamientos.</p> -->
                                 <p>{{user.userNotes}}</p>
                             </div>
