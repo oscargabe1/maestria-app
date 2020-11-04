@@ -37,40 +37,42 @@
         <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
             <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown d-none d-sm-block">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+                {{userName}}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-header">15 Notifications</span>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                <span class="float-right text-muted text-sm">3 mins</span>
+                <a [routerLink]="['profile']" class="dropdown-item">
+                  Mi Perfil
                 </a>
+                
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                <i class="fas fa-users mr-2"></i> 8 friend requests
-                <span class="float-right text-muted text-sm">12 hours</span>
+                <a href="javascript:;" (click)="logOut()" class="dropdown-item">
+                  Cerrar Sesión
                 </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                <i class="fas fa-file mr-2"></i> 3 new reports
-                <span class="float-right text-muted text-sm">2 days</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+
             </div>
             </li>
+
             <li class="nav-item">
-                <a [routerLink]="['profile']" class="nav-link">{{userName}}</a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fa fa-cog"></i>
+              <div class="dropdown d-md-none mt-2">
+                <a class="dropdown-toggle list-group-item btn btn-default" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{userName}}
                 </a>
-            </li> -->
+  
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        
+                  <a class="dropdown-item mb-1 btn btn-light" [routerLink]="['profile']">Mi Perfil</a>
+                  <a class="dropdown-item mb-1 btn btn-light" href="javascript:;" (click)="logOut()">Cerrar Sesión</a>
+                  
+                </div>
+              </div>
+            </li>
+
+            
+            
+
         </ul>
       </div>
 

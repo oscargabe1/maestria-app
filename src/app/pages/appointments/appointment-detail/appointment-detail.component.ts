@@ -46,7 +46,7 @@ export class AppointmentDetailComponent implements OnInit {
                   color:'badge bg-success'
                 };
               break;
-            case 3:
+            case 4:
                 this.appointment.appointmentStatus = {
                   name:'Cancelada',
                   color:'badge bg-danger'

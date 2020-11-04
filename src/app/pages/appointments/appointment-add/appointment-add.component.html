@@ -36,7 +36,7 @@
                           <div class="form-group">
                             <label><strong><i class="fa fa-user-md mr-1"></i> Doctor </strong></label>
                             <input *ngIf="type == 2" type="text" class="form-control" formControlName="doctor" [readonly]="type == 2">
-                            <select *ngIf="type == 3" class="form-control select2" style="width: 100%;" formControlName="doctor">
+                            <select *ngIf="type == 3" class="form-control select2" style="width: 100%;" formControlName="doctor" (ngModelChange)="switchDoctor($event)">
                                 <option value="" disabled selected>Doctor que realizará la consulta</option>
                                 <option *ngFor="let user of others" [value]="user.userID">{{user.userName}} - {{user.userSpecialty}}</option>
                             </select>
@@ -62,7 +62,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                               <label><strong><i class="fa fa-stethoscope mr-1"></i>Tratamiento </strong></label>
-                              <input type="text" class="form-control" placeholder="El tratamiento realizado en la consulta" formControlName="treatment">
+                              <input type="text" class="form-control" placeholder="El tratamiento que se realizará en la consulta" formControlName="treatment">
                             </div>
                           </div>
             
@@ -74,7 +74,7 @@
                         </div>
                       </div>
 
-                      <div class="row">
+                      <div class="row d-none d-sm-block">
                         <div class="col-12">
                           <label><strong><i class="fa fa-clock mr-1"></i>Hora de la Consulta </strong></label>
                           <div class="card">
@@ -84,10 +84,11 @@
                               </ul>
                             </div>
                             <div class="card-body">
+                              <p *ngIf="!doctor" class="text-muted">No se ha seleccionado a un doctor</p>
                               <div class="tab-content">
                                 <div *ngFor="let week of schedule" class="tab-pane" [ngClass] = "week.active" [id]="week.tab">
 
-                                  <table class="table table-sm">
+                                  <table class="table table-sm ">
                                     <thead>
                                       <tr>
                                         <th style="width: 100px;" *ngFor="let day of week.days">{{day.name}} <span class="text-muted">- {{day.number}}</span></th>
@@ -108,6 +109,53 @@
                                       
                                     </tbody>
                                   </table>
+
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- MOVIL -->
+                      <div class="row d-md-none">
+                        <div class="col-12">
+                          <label><strong><i class="fa fa-clock mr-1"></i>Hora de la Consulta M </strong></label>
+                          <div class="card">
+                            <div class="card-header">
+                              <ul class="nav nav-pills">
+                                <li *ngFor="let week of schedule" class="nav-item"><a class="nav-link" [ngClass] = "week.active" [attr.href]="'#m' + week.tab" data-toggle="tab">{{week.title}}</a></li>
+                              </ul>
+                            </div>
+                            <div class="card-body">
+                              <p *ngIf="!doctor" class="text-muted">No se ha seleccionado a un doctor</p>
+                            
+                              <div class="tab-content">
+                                <div *ngFor="let week of schedule" class="tab-pane" [ngClass] = "week.active" [id]="'m'+week.tab">
+
+                                  
+                                    <ul class="list-group">
+                                      <li class="list-group-item disabled">Seleccionar día <span *ngIf="selectedDate"> - {{dateDisplay | date:'short'}}</span></li>
+                                     
+                                        
+                                        <div  *ngFor="let day of week.days" class="dropdown" >
+                                          <a class="btn btn-secondary dropdown-toggle list-group-item btn btn-default" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{day.name}} <span class="text-muted">- {{day.number}}</span>
+                                          </a>
+                                        
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                      
+                                            <a *ngFor="let hour of day.hours" class="dropdown-item mb-1 btn btn-light" [class.disabled] = "hour.disabled"
+                                            [id]="hour.timestamp" (click)="toggleButtons(hour.timestamp)"
+                                              [ngClass] = "{'og-toggled': hour.timestamp == toggledButton}"
+                                               >{{hour.display}}</a>
+                                            
+                                          </div>
+                                        </div>
+                                    </ul>
+
+                                
 
 
                                 </div>

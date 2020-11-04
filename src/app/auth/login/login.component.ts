@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
           if(this.loginForm.get('remember').value){
             localStorage.setItem('email',this.loginForm.get('email').value)
           } else{
-            localStorage.removeItem('email')
+            localStorage.removeItem('email');
           }
            //Navegar al Dashboard
            this.router.navigateByUrl('/dashboard');

@@ -89,7 +89,7 @@ export class AppointmentEditComponent implements OnInit {
                   };
                   this.appointmentForm.controls['status'].setValue('Terminada');
                 break;
-              case 3:
+              case 4:
                   this.appointment.appointmentStatus = {
                     name:'Cancelada',
                     color:'badge bg-danger'
