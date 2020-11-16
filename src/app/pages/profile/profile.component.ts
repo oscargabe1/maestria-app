@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { AppointmentService } from "../../services/appointment.service";
+import { ScheduleService } from "../../services/schedule.service";
 import { User } from "../../models/user.model";
 import { Appointment } from "../../models/appointment.model";
 @Component({
@@ -13,8 +14,8 @@ export class ProfileComponent implements OnInit {
   userImg = "/assets/img/img_profile_default.png";
   user:User;
   appointments:Array<Appointment>;
-
-  constructor(public userService:UserService, public appointmentService:AppointmentService) { }
+  schedule;
+  constructor(public userService:UserService, public appointmentService:AppointmentService, public scheduleService:ScheduleService,) { }
 
   ngOnInit() {
     this.getAppointments();
@@ -27,6 +28,8 @@ export class ProfileComponent implements OnInit {
         console.log(resp);
         this.user = resp.resultset;
         this.userImg = resp.resultset.userImg;
+
+        this.getSchedule(this.user.userID);
       })
   }
 
@@ -42,6 +45,14 @@ export class ProfileComponent implements OnInit {
         this.appointments = finishedAppointmentsArr;
         console.log(this.appointments);
         console.log("APPOINTMENTS");
+      })
+  }
+  getSchedule(doctorID:number){
+    this.scheduleService.getScheduleDetail(doctorID)
+      .subscribe(resp =>{
+        console.log(resp);
+        console.log("SCHEDULE");
+        this.schedule = resp.resultset; 
       })
   }
 

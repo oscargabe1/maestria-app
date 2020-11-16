@@ -1,0 +1,221 @@
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper d-flex justify-content-center">
+    <div *ngIf="user" class="og-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Mi Perfil</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+                  <li class="breadcrumb-item"><a routerLink="/dashboard/profile">Mi Perfil</a></li>
+                  <li class="breadcrumb-item active">Editar Horario</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">Editar Horario</h3>
+                </div>
+                <!-- /.card-header -->
+                <form method="post"
+                  autocomplete="off" 
+                  [formGroup]="scheduleForm"
+                  (ngSubmit)="postSchedule()"
+                  (keydown.enter)="$event.preventDefault()">
+
+                  <div class="card-body">
+                    
+
+                    <label><strong><i class="fa fa-clock mr-1"></i>Horario </strong></label>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Lunes</label>
+
+                        <button type="button" id="d1_dis" class="btn btn-outline-danger btn-sm ml-2" (click)="disableDay(1)" 
+                                [ngClass] = "{'active': disabledDays[1]}">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Entrada:</label>
+                              <input type="time" class="form-control" formControlName="d1_start" [ngClass] = "{'disable': disabledDays[1]}">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Salida:</label>
+                              <input type="time" class="form-control" formControlName="d1_end" [ngClass] = "{'disable': disabledDays[1]}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label>Martes</label>
+                        
+                        <button type="button" id="d2_dis" class="btn btn-outline-danger btn-sm ml-2" (click)="disableDay(2)" 
+                                [ngClass] = "{'active': disabledDays[2]}">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Entrada:</label>
+                              <input type="time" class="form-control" formControlName="d2_start" [ngClass] = "{'disable': disabledDays[2]}">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Salida:</label>
+                              <input type="time" class="form-control" formControlName="d2_end" [ngClass] = "{'disable': disabledDays[2]}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Miércoles</label>
+                        <button type="button" id="d3_dis" class="btn btn-outline-danger btn-sm ml-2" (click)="disableDay(3)" 
+                                [ngClass] = "{'active': disabledDays[3]}">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Entrada:</label>
+                              <input type="time" class="form-control" formControlName="d3_start" [ngClass] = "{'disable': disabledDays[3]}">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Salida:</label>
+                              <input type="time" class="form-control" formControlName="d3_end" [ngClass] = "{'disable': disabledDays[3]}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label>Jueves</label>
+                        <button type="button" id="d4_dis" class="btn btn-outline-danger btn-sm ml-2" (click)="disableDay(4)" 
+                                [ngClass] = "{'active': disabledDays[4]}">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Entrada:</label>
+                              <input type="time" class="form-control" formControlName="d4_start" [ngClass] = "{'disable': disabledDays[4]}">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Salida:</label>
+                              <input type="time" class="form-control" formControlName="d4_end" [ngClass] = "{'disable': disabledDays[4]}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Viernes</label>
+                        <button type="button" id="d5_dis" class="btn btn-outline-danger btn-sm ml-2" (click)="disableDay(5)" 
+                                [ngClass] = "{'active': disabledDays[5]}">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Entrada:</label>
+                              <input type="time" class="form-control" formControlName="d5_start" [ngClass] = "{'disable': disabledDays[5]}">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Salida:</label>
+                              <input type="time" class="form-control" formControlName="d5_end" [ngClass] = "{'disable': disabledDays[5]}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label>Sábado</label>
+                        <button type="button" id="d6_dis" class="btn btn-outline-danger btn-sm ml-2" (click)="disableDay(6)" 
+                                [ngClass] = "{'active': disabledDays[6]}">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Entrada:</label>
+                              <input type="time" class="form-control" formControlName="d6_start" [ngClass] = "{'disable': disabledDays[6]}">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Salida:</label>
+                              <input type="time" class="form-control" formControlName="d6_end" [ngClass] = "{'disable': disabledDays[6]}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Domingo</label>
+                        <button type="button" id="d7_dis" class="btn btn-outline-danger btn-sm ml-2" (click)="disableDay(7)" 
+                                [ngClass] = "{'active': disabledDays[7]}">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Entrada:</label>
+                              <input type="time" class="form-control" formControlName="d7_start" [ngClass] = "{'disable': disabledDays[7]}">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label class="text-muted">Salida:</label>
+                              <input type="time" class="form-control" formControlName="d7_end" [ngClass] = "{'disable': disabledDays[7]}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    
+                    </div> 
+          
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer clearfix">
+                    <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save mr-1"></i> Guardar</button>
+                  </div>
+                </form>
+              </div>
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+
+    </div>
+</div>
+<!-- /.content-wrapper -->

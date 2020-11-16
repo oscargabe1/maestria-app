@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppointmentDetailComponent } from './appointments/appointment-detail/appointment-detail.component';
 import { AppointmentEditComponent } from './appointments/appointment-edit/appointment-edit.component';
 import { AppointmentAddComponent } from './appointments/appointment-add/appointment-add.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AppointmentAddComponent } from './appointments/appointment-add/appointm
     ProfileEditComponent,
     AppointmentDetailComponent,
     AppointmentEditComponent,
-    AppointmentAddComponent
+    AppointmentAddComponent,
+    ScheduleComponent
   ],
   exports:[
     PagesComponent,

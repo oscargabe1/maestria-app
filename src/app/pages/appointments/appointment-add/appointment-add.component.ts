@@ -69,6 +69,7 @@ export class AppointmentAddComponent implements OnInit {
   }
 
   getSchedule(doctorID:number){
+    console.log(doctorID);
     this.scheduleService.getSchedule(doctorID)
       .subscribe(resp =>{
         console.log(resp);

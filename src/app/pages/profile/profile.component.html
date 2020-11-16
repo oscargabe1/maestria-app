@@ -90,7 +90,7 @@
                       <ul class="nav nav-pills">
                         <li  class="nav-item"><a class="nav-link active" href="#offer" data-toggle="tab">Información</a></li>
                         <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">Historial</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Horario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#schedule" data-toggle="tab">Horario</a></li>
                       </ul>
                     </div><!-- /.card-header -->
                     <div class="card-body">
@@ -162,6 +162,36 @@
 
                               
                           </div>
+
+                          <div class="tab-pane" id="schedule">
+                            <h5 class="tab-title">Horario de Actividad</h5>
+                            <p *ngIf="schedule.length == 0" class="text-muted">Aun no especifica horario.</p>
+
+                            <div *ngIf="schedule.length > 0">
+                              <div class="row">
+                                <div class="col-12">
+                                  <ul class="list-group list-group-flush">
+
+                                    <li *ngFor="let sc of schedule" class="list-group-item">
+                                      <div class="row">
+                                        <div class="col-6">
+                                          <p>{{sc.day}}: <span class="text-muted">{{sc.start}} - {{sc.end}}</span></p>
+                                        </div>
+                          
+                                      </div>
+                          
+                                    </li>
+
+                                  </ul>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <a *ngIf="user.userType == 2" routerLink="/dashboard/schedule" class="btn btn-primary"><b>Editar Horario</b></a>
+
+                            
+                        </div>
                         </div>
 
                     </div>

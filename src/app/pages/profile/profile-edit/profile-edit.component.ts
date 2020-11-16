@@ -7,6 +7,7 @@ import { UserService } from "../../../services/user.service";
 import { User } from "../../../models/user.model";
 import { Specialty } from "../../../models/specialty.model";
 import { SpecialtyService } from "../../../services/specialty.service";
+import { ScheduleService } from "../../../services/schedule.service";
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
@@ -17,7 +18,7 @@ export class ProfileEditComponent implements OnInit {
   user:User;
   specialties:Specialty;
   nTreatment:string = '';
-
+  schedule;
   //userForm:FormGroup;
 
   public userForm = this.fb.group({
@@ -31,7 +32,7 @@ export class ProfileEditComponent implements OnInit {
     notes: ['', []],
   });
 
-  constructor(public userService:UserService, public specialtyService:SpecialtyService, private fb: FormBuilder, public router:Router) { }
+  constructor(public userService:UserService, public specialtyService:SpecialtyService, public scheduleService:ScheduleService, private fb: FormBuilder, public router:Router) { }
 
   ngOnInit() {
     //this.initForm();
@@ -109,6 +110,14 @@ export class ProfileEditComponent implements OnInit {
       treatments: [this.user.userTreatments, []],
       notes: [this.user.userNotes, []],
     });
+  }
+  getSchedule(doctorID:number){
+    this.scheduleService.getScheduleDetail(doctorID)
+      .subscribe(resp =>{
+        console.log(resp);
+        console.log("SCHEDULE");
+        this.schedule = resp.resultset; 
+      })
   }
 
   postUser(){

@@ -26,4 +26,27 @@ export class ScheduleService {
               })
             );
   }
+  getScheduleDetail(doctorID:number){
+    const token = localStorage.getItem('token') || '';
+    return this.http.get(`${base_url}/api/endpoint/scheduleDetail/${doctorID}`,{
+              headers:{
+                'Authorization':token
+              }
+            }).pipe(
+              tap((resp:any) =>{
+              
+              })
+            );
+  }
+  postSchedule(formData){
+    const token = localStorage.getItem('token') || '';
+    return this.http.post(`${base_url}/api/endpoint/scheduleEdit`, formData,{
+              headers:{
+                'Authorization':token
+              }
+            }).pipe(
+              tap((resp:any) =>{
+              })
+            );
+  }
 }
