@@ -17,6 +17,7 @@ import { AppointmentDetailComponent } from './appointments/appointment-detail/ap
 import { AppointmentEditComponent } from './appointments/appointment-edit/appointment-edit.component';
 import { AppointmentAddComponent } from './appointments/appointment-add/appointment-add.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     AppointmentDetailComponent,
     AppointmentEditComponent,
     AppointmentAddComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    UserComponent
   ],
   exports:[
     PagesComponent,

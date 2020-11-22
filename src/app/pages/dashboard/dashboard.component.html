@@ -1,1 +1,44 @@
-<p>dashboard works!</p>
+<div class="content-wrapper d-flex justify-content-center">
+    <div *ngIf="loaded" class="og-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1>Estudiantes</h1>
+                </div>
+              </div>
+            </div><!-- /.container-fluid -->
+          </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div *ngFor="let user of users" class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">{{user.specialty.specialty_name}}</h3>
+                              <div class="card-tools">
+                                <a type="button"[routerLink]="['user/',user.userID]" class="btn btn-primary text-white">Ver perfil</a>
+                              </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p><strong><i class="fa fa-user-md mr-1"></i> Nombre: </strong> {{user.name}}</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><strong><i class="fa fa-book-md mr-1"></i> Universidad: </strong> {{user.school}}</p>
+                                    </div>
+                                </div>  
+                                
+                            </div>
+                       
+                          </div>
+                    </div>
+                </div>
+
+               
+            </div>
+        </section>
+    </div>
+</div>

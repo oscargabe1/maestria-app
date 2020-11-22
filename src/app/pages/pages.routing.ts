@@ -11,6 +11,7 @@ import { AppointmentEditComponent } from "./appointments/appointment-edit/appoin
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from "./profile/profile-edit/profile-edit.component";
 import { ScheduleComponent } from './schedule/schedule.component';
+import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
 import { UsersEditComponent } from "./users/users-edit/users-edit.component";
 
@@ -28,6 +29,7 @@ const routes: Routes = [
             {path: 'appointments/edit/:id', component: AppointmentEditComponent, data:{title: 'Dashboard'}},
             {path: 'appointments/add', component: AppointmentAddComponent, data:{title: 'Dashboard'}},
             {path: 'schedule', component: ScheduleComponent, data:{title: 'Dashboard'}},
+            {path: 'user/:id', component: UserComponent, data:{title: 'Dashboard'}},
             // {path: 'user/:id', component: UsersComponent, data:{title: 'Dashboard'}},
             // {path: 'user/edit/:id', component: UsersEditComponent, data:{title: 'Dashboard'}},
         ]

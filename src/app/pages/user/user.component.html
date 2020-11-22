@@ -1,0 +1,104 @@
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper d-flex justify-content-center">
+    <div *ngIf="user" class="og-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>{{user.userName}}</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+                  <li class="breadcrumb-item active">Mi Perfil</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <section>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Información general</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="">
+                                        <div class="text-center">
+                                            <img class="img-fluid"
+                                                 src="{{userImg}}"
+                                                 alt="User profile picture">
+                                        </div>
+                                    </div>
+                                    <div class=" mt-2">
+                                        <a routerLink="/dashboard/appointments/add" class="btn btn-primary btn-block text-white">Agendar cita</a>
+                                        <a class="btn btn-light btn-block">Volver</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-12">
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <strong><i class="fas fa-envelope mr-1"></i> Email </strong>
+                                            <p class="text-muted">{{user.userSchool}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <strong><i class="fas fa-stethoscope mr-1"></i> Especialidad </strong>
+                                            <p class="text-muted">{{user.userSpecialty.specialty_name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <strong><i class="fas fa-list mr-1"></i> Consultas Activas </strong>
+                                            <p class="text-muted">{{user.activeAppointments}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <strong><i class="fas fa-list mr-1"></i> Consultas Terminadas </strong>
+                                            <p class="text-muted">{{user.finishedAppointments}}</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <strong><i class="fas fa-book mr-1"></i> Educación </strong>
+                                            <p class="text-muted">{{user.userSchool}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong>
+                                            <p class="text-muted">{{user.userLocation}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <strong><i class="fa fa-phone mr-1"></i> Teléfono</strong>
+                                            <p class="text-muted">{{user.userPhone}}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <strong><i class="fa fa-stethoscope mr-1"></i>Tratamientos</strong>
+                                    <ul>
+                                      <li *ngIf="user.userTreatments.length == 0">No se han especificado tratamientos.</li>
+                                      <li *ngFor="let treatment of user.userTreatments">{{treatment.treatment_name}}</li>
+                                    </ul>
+            
+                                    <strong><i class="fa fa-comment mr-1"></i>Mensaje de Introducción</strong>
+                                    <!-- <p *ngIf="user.userTreatments.length == 0">No se han especificado tratamientos.</p> -->
+                                    <p>{{user.userNotes}}</p>
+                                </div>
+                            </div>
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<!-- /.content-wrapper -->

@@ -53,6 +53,19 @@ export class UserService {
             );
   }
 
+  getUserDetail(userID){
+    const token = localStorage.getItem('token') || '';
+    return this.http.get(`${base_url}/api/endpoint/user/detail/${userID}`,{
+              headers:{
+                'Authorization':token
+              }
+            }).pipe(
+              tap((resp:any) =>{
+              
+              })
+            );
+  }
+
   getDoctorsPatients(){
     const token = localStorage.getItem('token') || '';
     return this.http.get(`${base_url}/api/endpoint/doctorsPatients`,{
