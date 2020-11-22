@@ -36,8 +36,8 @@
                           <div class="form-group">
                             <label><strong><i class="fa fa-user-md mr-1"></i> Doctor </strong></label>
                             <input *ngIf="type == 2" type="text" class="form-control" formControlName="doctor" [readonly]="type == 2">
-                            <select *ngIf="type == 3" class="form-control select2" style="width: 100%;" formControlName="doctor" (ngModelChange)="switchDoctor($event)">
-                                <option value="" disabled selected>Doctor que realizará la consulta</option>
+                            <select [(ngModel)]="doctorID" *ngIf="type == 3" class="form-control select2" style="width: 100%;" formControlName="doctor" (ngModelChange)="switchDoctor($event)">
+                                <option value="0" disabled >Doctor que realizará la consulta</option>
                                 <option *ngFor="let user of others" [value]="user.userID">{{user.userName}} - {{user.userSpecialty}}</option>
                             </select>
                           </div>

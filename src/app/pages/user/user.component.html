@@ -36,7 +36,8 @@
                                         </div>
                                     </div>
                                     <div class=" mt-2">
-                                        <a routerLink="/dashboard/appointments/add" class="btn btn-primary btn-block text-white">Agendar cita</a>
+                                        <a [routerLink]="['/dashboard/appointments/add', user.userID]" class="btn btn-primary btn-block text-white">Agendar cita</a>
+                                        
                                         <a class="btn btn-light btn-block">Volver</a>
                                     </div>
                                 </div>

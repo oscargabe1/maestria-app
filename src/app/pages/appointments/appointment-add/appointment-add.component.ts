@@ -38,14 +38,21 @@ export class AppointmentAddComponent implements OnInit {
   schedule:Array<any> = [];
   dateDisplay;
   selectedDate = false;
+  doctorID = 0;
   
 
   constructor(private activatedRoute:ActivatedRoute, public appointmentService:AppointmentService, public userService:UserService, public scheduleService:ScheduleService, private fb: FormBuilder, public router:Router) { }
 
   ngOnInit() {
     this.getDoctorsPatients();
-    console.log(this.doctor);
-    console.log("bruv");
+  }
+
+  getPreSetDoctor(){
+    this.activatedRoute.params.subscribe(params =>{
+     this.doctorID = params.id;
+   
+    });
+
   }
 
   getDoctorsPatients(){
@@ -59,6 +66,8 @@ export class AppointmentAddComponent implements OnInit {
         this.populateFields();
         if(this.type == 2){
           this.switchDoctor(this.user.userID);
+        } else{
+          this.getPreSetDoctor();
         }
       })
   }

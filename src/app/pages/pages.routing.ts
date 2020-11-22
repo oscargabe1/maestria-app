@@ -28,7 +28,7 @@ const routes: Routes = [
             {path: 'appointments', component: AppointmentsComponent, data:{title: 'Dashboard'}},
             {path: 'appointments/detail/:id', component: AppointmentDetailComponent, data:{title: 'Dashboard'}},
             {path: 'appointments/edit/:id', component: AppointmentEditComponent, data:{title: 'Dashboard'}},
-            {path: 'appointments/add', component: AppointmentAddComponent, data:{title: 'Dashboard'}},
+            {path: 'appointments/add/:id', component: AppointmentAddComponent, data:{title: 'Dashboard'}},
             {path: 'schedule', component: ScheduleComponent, data:{title: 'Dashboard'}},
             {path: 'user/:id', component: UserComponent, data:{title: 'Dashboard'}},
             // {path: 'user/:id', component: UsersComponent, data:{title: 'Dashboard'}},
