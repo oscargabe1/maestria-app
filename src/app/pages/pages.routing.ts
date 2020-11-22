@@ -14,6 +14,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
 import { UsersEditComponent } from "./users/users-edit/users-edit.component";
+import { PatientGuard } from '../guards/patient.guard';
 
 const routes: Routes = [
     {
@@ -21,7 +22,7 @@ const routes: Routes = [
         component: PagesComponent,
         canActivate:[AuthGuard],
         children:[
-            {path: '', component: DashboardComponent, data:{title: 'Dashboard'}},
+            {path: '', component: DashboardComponent, canActivate: [PatientGuard]},
             {path: 'profile', component: ProfileComponent, data:{title: 'Dashboard'}},
             {path: 'profile/edit', component: ProfileEditComponent, data:{title: 'Dashboard'}},
             {path: 'appointments', component: AppointmentsComponent, data:{title: 'Dashboard'}},

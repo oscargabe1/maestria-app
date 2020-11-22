@@ -103,7 +103,13 @@ export class AppointmentAddComponent implements OnInit {
   }
 
   postAppointment(){
-    this.appointmentForm.controls['doctor'].setValue(this.user.userID);
+    if (this.user.userType == 2) {
+      this.appointmentForm.controls['doctor'].setValue(this.user.userID);
+    } else {
+      this.appointmentForm.controls['user'].setValue(this.user.userID);
+    }
+
+    console.log(this.appointmentForm.value);
 
     if (this.appointmentForm.valid) {
       this.appointmentService.addAppointment(this.appointmentForm.value)

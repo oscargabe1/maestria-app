@@ -22,9 +22,12 @@ export class UserService {
     return this.http.post(`${base_url}/api/endpoint/user/auth`, formData)
             .pipe(
               tap((resp:any) =>{
+                console.log("respssssss");
+                console.log(resp);
                 localStorage.setItem('token', resp.resultset.token);
                 localStorage.setItem('userID', resp.resultset.userID);
                 localStorage.setItem('userName', resp.resultset.userName);
+                localStorage.setItem('userType', resp.resultset.userType);
               })
             );
   }
@@ -33,9 +36,12 @@ export class UserService {
     return this.http.post(`${base_url}/api/endpoint/user/register`, formData)
             .pipe(
               tap((resp:any) =>{
+                console.log("registroooooo");
+                console.log(resp);
                 localStorage.setItem('token', resp.resultset.token);
                 localStorage.setItem('userID', resp.resultset.userID);
                 localStorage.setItem('userName', resp.resultset.userName);
+                localStorage.setItem('userType', resp.resultset.userType);
               })
             );
   }
@@ -89,6 +95,7 @@ export class UserService {
               tap((resp:any) =>{
                 console.log("postUser");
                 localStorage.setItem('userName',resp.resultset.userName);
+                localStorage.setItem('userType', resp.resultset.userType);
                 this.sharedService.updateHeader();
               })
             );
@@ -102,8 +109,11 @@ export class UserService {
               }
             }).pipe(
               tap((resp:any) =>{
+                console.log("validate");
+                console.log(resp);
                 localStorage.setItem('userName', resp.resultset.userName);
                 localStorage.setItem('userID', resp.resultset.userID);
+                localStorage.setItem('userType', resp.resultset.userType);
               })
             );
   }

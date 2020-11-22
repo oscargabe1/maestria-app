@@ -9,16 +9,22 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  userName = this.sharedService.headerUserName || 'Mi Perfil';
+  userName;
+  userType;
 
   constructor(public sharedService:SharedService, private router:Router) { }
 
   ngOnInit() {
-    //this.getName();
+    this.getName();
+    this.getType();
   }
 
   getName(){
     this.userName = localStorage.getItem('userName') || 'Mi Perfil';
+  }
+
+  getType(){
+    this.userType = localStorage.getItem('userType');
   }
 
   logOut(){
