@@ -31,6 +31,8 @@
                         <img class="profile-user-img img-fluid img-circle"
                              src="{{userImg}}"
                              alt="User profile picture">
+                             <input type="file" style="display:none" (change)="uploadFile($event)" #fileInput>
+                             <button class="btn btn-sm btn-light mt-1" (click)="fileInput.click()">Cambiar imagen</button>
                       </div>
       
                       <h3 class="profile-username text-center">{{user.userName}}</h3>

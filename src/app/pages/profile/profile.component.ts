@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   user:User;
   appointments:Array<Appointment>;
   schedule;
+  selectedFile = null;
   constructor(public userService:UserService, public appointmentService:AppointmentService, public scheduleService:ScheduleService,) { }
 
   ngOnInit() {
@@ -54,6 +55,23 @@ export class ProfileComponent implements OnInit {
         console.log("SCHEDULE");
         this.schedule = resp.resultset; 
       })
+  }
+  uploadFile(event){
+    this.selectedFile = event.target.files[0];
+
+
+    this.userService.postImage(this.selectedFile, this.user.userID)
+    .subscribe(resp => {
+      console.log(resp);
+      window.location.reload();
+      
+    }, err =>{
+      console.warn(err);
+      window.location.reload();
+    })
+
+
+
   }
 
 }

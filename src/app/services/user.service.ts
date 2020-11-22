@@ -117,4 +117,24 @@ export class UserService {
               })
             );
   }
+
+  postImage(uploadedFile, userId){
+    
+    let uploadFile:FormData = new FormData();
+    uploadFile.append('uploadFile', uploadedFile);
+
+
+    const token = localStorage.getItem('token') || '';
+    console.log(uploadedFile);
+    console.log("ARHCIVOSS");
+    return this.http.post(`${base_url}/api/endpoint/fileupload/${userId}`, uploadFile,{
+              headers:{
+                'Authorization':token
+              }
+            }).pipe(
+              tap((resp:any) =>{
+               
+              })
+            );
+  }
 }
