@@ -16,7 +16,8 @@
                     <div class="col-12">
                         <div *ngFor="let user of users" class="card">
                             <div class="card-header">
-                              <h3 class="card-title">{{user.specialty.specialty_name}}</h3>
+                              <h3 *ngIf="user.specialty != null" class="card-title">{{user.specialty.specialty_name}}</h3>
+                              <h3 *ngIf="user.specialty == null" class="card-title">Especialidad no especificada</h3>
                               <div class="card-tools">
                                 <a type="button"[routerLink]="['user/',user.userID]" class="btn btn-primary text-white">Ver perfil</a>
                               </div>

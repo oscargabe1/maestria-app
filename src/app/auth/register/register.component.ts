@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     email: ['', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
     password: ['', Validators.required],
     passwordConfirm: ['', Validators.required],
-    type: [false]
+    type: ['', Validators.required]
   });
 
   constructor(private router:Router, private fb: FormBuilder, private userService: UserService) { }
@@ -51,8 +51,9 @@ export class RegisterComponent implements OnInit {
     this.formSubmitted = true;
     console.log(this.registerForm);
     if(this.registerForm.invalid){
-      return;
+      return false;
     }
+    console.log('valido');
     //Realizar posteo
     this.userService.register(this.registerForm.value)
           .subscribe(resp =>{

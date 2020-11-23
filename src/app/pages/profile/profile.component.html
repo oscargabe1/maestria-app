@@ -102,17 +102,20 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <strong><i class="fas fa-book mr-1"></i> Educación </strong>
-                                        <p class="text-muted">{{user.userSchool}}</p>
+                                        <p *ngIf="user.userSchool != ''" class="text-muted">{{user.userSchool}}</p>
+                                        <p *ngIf="user.userSchool == ''" class="text-muted">No especificada</p>
                                     </div>
                                     <div class="col-6">
                                         <strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong>
-                                        <p class="text-muted">{{user.userLocation}}</p>
+                                        <p *ngIf="user.userLocation != ''"  class="text-muted">{{user.userLocation}}</p>
+                                        <p *ngIf="user.userLocation == ''"  class="text-muted">No especificada</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <strong><i class="fa fa-phone mr-1"></i> Teléfono</strong>
-                                        <p class="text-muted">{{user.userPhone}}</p>
+                                        <p *ngIf="user.userPhone != ''" class="text-muted">{{user.userPhone}}</p>
+                                        <p *ngIf="user.userPhone == ''" class="text-muted">No especificado</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -124,7 +127,8 @@
         
                                 <strong><i class="fa fa-comment mr-1"></i>Mensaje de Introducción</strong>
                                 <!-- <p *ngIf="user.userTreatments.length == 0">No se han especificado tratamientos.</p> -->
-                                <p>{{user.userNotes}}</p>
+                                <p *ngIf="user.userNotes != ''">{{user.userNotes}}</p>
+                                <p *ngIf="user.userNotes == ''">No especificado</p>
                             </div>
 
                             <div class="tab-pane" id="history">
